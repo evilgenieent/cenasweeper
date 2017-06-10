@@ -1,0 +1,38 @@
+<template>
+
+  <div>
+    X: <input type="text" value.bind="x"><br>
+    Y: <input type="text" value.bind="y"><br>
+    Mines: <input type="text" value.bind="minesCount"><br>
+    <button click.delegate="init()">Refresh</button>
+  </div>
+
+  <hr>
+
+  <div>
+
+    <table>
+
+      <tbody>
+
+        <tr repeat.for="[x, column] of board">
+
+          <td repeat.for="[y, field] of column" css="color: ${field.cena ? 'red' : 'black'};">
+            <div
+              class="cs-field ${field.visited ? 'cs-visited' : ''} ${field.mines === 0 ? 'cs-empty' : ''} ${field.cena ? 'cs-cena' : ''}"
+              click.delegate="click($event, x, y)">
+              <!--${field.mines !== 0 ? field.mines : ''}-->
+              ${field.mines}
+              <img if.bind="field.cena && field.visited" src="images/john_cena.png" alt="John Cena, out of nowhere!">
+            </div>
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</template>
