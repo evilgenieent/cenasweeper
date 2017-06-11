@@ -1,3 +1,9 @@
+/*
+ * @Author: hajnyon 
+ * @Date: 2017-06-11 02:39:57 
+ * @Last Modified by: hajnyon
+ * @Last Modified time: 2017-06-11 02:43:50
+ */
 
 // Aurelia imports
 import { customElement } from 'aurelia-framework';
@@ -9,10 +15,10 @@ export class Board {
 
   constructor() {
 
-    this.x = 10;    
-    this.y = 10;    
+    this.x = 10;
+    this.y = 10;
     this.minesCount = 10;
-    
+
     this.init();
 
   }
@@ -37,7 +43,7 @@ export class Board {
   setBoard() {
 
     for (var i = 0; i < this.x; i++) {
-      
+
       let column = new Map;
 
       for (var j = 0; j < this.y; j++) {
@@ -49,7 +55,7 @@ export class Board {
         }
         column.set(j, field);
       }
-      
+
       this.board.set(i, column);
     }
 
@@ -64,7 +70,7 @@ export class Board {
 
       let field = this.board.get(randX).get(randY);
 
-      if(field.cena === true) {
+      if (field.cena === true) {
         i--;
       } else {
         field.cena = true;
@@ -76,20 +82,15 @@ export class Board {
   }
 
   click(event, x, y) {
-    
-    event.preventDefault();
-    switch (event.which) {
-      case 1:
-        // left click
-        this.visited(x, y);
-        break;
-      case 2:
-        // mouse click
-        this.flagged(x, y);
-        break;
-    
-      default:
-        break;
+
+    console.log(event);
+
+    if(!event.ctrlKey) {
+      // click
+      this.visited(x, y);
+    } else {
+      // click with ctrl
+      this.flagged(x, y);
     }
 
     this.checkVictory();
@@ -100,11 +101,11 @@ export class Board {
 
     let winner = true;
 
-    this.board.forEach(function(column) {
+    this.board.forEach(function (column) {
 
-      column.forEach(function(field) {
+      column.forEach(function (field) {
 
-        if(!field.visited && !field.cena) {
+        if (!field.visited && !field.cena) {
           winner = false;
         }
 
@@ -113,7 +114,7 @@ export class Board {
     });
 
     this.winner = winner;
-    if(winner) {
+    if (winner) {
       this.endGame();
     }
 
@@ -122,12 +123,12 @@ export class Board {
   visited(x, y) {
     let field = this.board.get(x).get(y);
 
-    if(field.cena) {
+    if (field.cena) {
       this.endGame();
-    } else if(field.visited) {
+    } else if (field.visited) {
       return;
     } else {
-      this.proccessNeighbours(x,y);
+      this.proccessNeighbours(x, y);
     }
 
   }
@@ -137,22 +138,22 @@ export class Board {
     let mines = 0;
     let field = this.board.get(x).get(y);
 
-    if(field.visited) return;
+    if (field.visited) return;
 
     let neighbours = [
-      {x: x-1, y: y-1},
-      {x: x-1, y: y},
-      {x: x-1, y: y+1},
-      {x: x,   y: y-1},
-      {x: x,   y: y+1},
-      {x: x+1, y: y-1},
-      {x: x+1, y: y},
-      {x: x+1, y: y+1}
+      { x: x - 1, y: y - 1 },
+      { x: x - 1, y: y },
+      { x: x - 1, y: y + 1 },
+      { x: x, y: y - 1 },
+      { x: x, y: y + 1 },
+      { x: x + 1, y: y - 1 },
+      { x: x + 1, y: y },
+      { x: x + 1, y: y + 1 }
     ];
 
     for (var i = 0; i < neighbours.length; i++) {
-      
-      if(!this.fieldExists(neighbours[i])) continue;
+
+      if (!this.fieldExists(neighbours[i])) continue;
 
       let neighbourField = this.board.get(neighbours[i].x).get(neighbours[i].y);
 
@@ -163,9 +164,9 @@ export class Board {
     field.mines = mines;
     field.visited = true;
 
-    if(mines === 0) {
+    if (mines === 0) {
       for (var i = 0; i < neighbours.length; i++) {
-        if(this.fieldExists(neighbours[i]))
+        if (this.fieldExists(neighbours[i]))
           this.proccessNeighbours(neighbours[i].x, neighbours[i].y);
       }
     }
@@ -188,9 +189,9 @@ export class Board {
       this.mines[i].visited = true;
     }
 
-    if(this.audioPlaying) return;
+    if (this.audioPlaying) return;
 
-    if(this.winner) {
+    if (this.winner) {
       alert('You win!');
     } else {
 
@@ -202,7 +203,7 @@ export class Board {
 
     var _this = this;
 
-    setTimeout(function(){
+    setTimeout(function () {
       _this.displayGif = true;
     }, 2500);
 

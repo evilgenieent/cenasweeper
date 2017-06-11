@@ -24,7 +24,11 @@
 
           <td repeat.for="[y, field] of column" css="color: ${field.cena ? 'red' : 'black'};">
             <div
-              class="cs-field ${field.visited ? 'cs-visited' : ''} ${field.mines === 0 ? 'cs-empty' : ''} ${field.cena ? 'cs-cena' : ''}"
+              class="cs-field
+                ${field.visited ? 'cs-visited' : ''}
+                ${field.mines === 0 ? 'cs-empty' : ''}
+                ${field.flagged ? 'cs-flagged' : ''}
+                ${field.cena ? 'cs-cena' : ''}"
               click.delegate="click($event, x, y)">
               <!--${field.mines !== 0 ? field.mines : ''}-->
               ${field.mines}
