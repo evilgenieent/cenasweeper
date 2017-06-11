@@ -2,7 +2,7 @@
  * @Author: hajnyon 
  * @Date: 2017-06-11 02:39:57 
  * @Last Modified by: hajnyon
- * @Last Modified time: 2017-06-11 03:11:58
+ * @Last Modified time: 2017-06-11 03:35:08
  */
 
 // Aurelia imports
@@ -20,6 +20,9 @@ export class Board {
     this.y = 10;
     this.minesCount = 10;
 
+    // audio file
+    this.audio = new Audio('audio/john_cena.mp3');
+
     this.init();
 
   }
@@ -35,6 +38,10 @@ export class Board {
     this.audioPlaying = false;
     this.displayGif = false;
     this.winner = false;
+    
+    // reset audio
+    this.audio.pause();
+    this.audio.currentTime = 0;
 
     this.setBoard();
 
@@ -292,8 +299,7 @@ export class Board {
 
       // play audio
       this.audioPlaying = true;
-      var audio = new Audio('audio/john_cena.mp3');
-      audio.play();
+      this.audio.play();
 
     }
 
