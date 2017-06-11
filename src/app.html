@@ -1,12 +1,41 @@
 <template>
 
   <require from="board"></require>
+  <require from="controls"></require>
+
   <require from="resources/css/main.css"></require>
-  
-  <h1>Cena sweeper</h1>
+  <require from="resources/css/simple-grid.css"></require>
 
-  <board view-model="board"></board>
+  <div class="jumbotron">
 
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-12">
+          
+          <h1>Cena sweeper</h1>
+
+          <controls view-model="controls" x.two-way="x" y.two-way="y" mines-count.two-way="minesCount"></controls>
+
+        </div>
+
+      </div>
+
+    </div>
   
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-12">
+        <board view-model="board" x.two-way="x" y.two-way="y" mines-count.two-way="minesCount"></board>
+      </div>
+
+    </div>
+
+  </div>
 
 </template>

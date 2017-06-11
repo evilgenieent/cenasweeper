@@ -2,29 +2,44 @@
  * @Author: hajnyon 
  * @Date: 2017-06-11 02:39:57 
  * @Last Modified by: hajnyon
- * @Last Modified time: 2017-06-11 03:35:08
+ * @Last Modified time: 2017-06-11 13:11:47
  */
 
 // Aurelia imports
-import { customElement } from 'aurelia-framework';
+import { customElement, bindable } from 'aurelia-framework';
 // Project imports
 import { rand } from 'resources/helpers';
 
 @customElement('board')
 export class Board {
 
-  constructor() {
+  @bindable x;
+  @bindable y;
+  @bindable minesCount;
 
-    // default parameters of board
-    this.x = 10;
-    this.y = 10;
-    this.minesCount = 10;
+  constructor() {
 
     // audio file
     this.audio = new Audio('audio/john_cena.mp3');
 
+  }
+
+  bind() {
+
+    console.log(this);
+
     this.init();
 
+  }
+
+  xChanged() {
+    this.init();
+  }
+  yChanged() {
+    this.init();
+  }
+  minesCountChanged() {
+    this.init();
   }
 
   /**

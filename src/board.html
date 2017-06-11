@@ -1,22 +1,16 @@
 <template>
-
-  <div>
-    X: <input type="text" value.bind="x"><br>
-    Y: <input type="text" value.bind="y"><br>
-    Mines: <input type="text" value.bind="minesCount"><br>
+  
+  <div class="center">
     <button click.delegate="init()">Refresh</button>
   </div>
 
-  <hr>
-  
-  <div if.bind="displayGif" class="cs-gif">
+  <div if.bind="displayGif" class="cs-gif center">
     <img src="${winner ? 'images/jc_win.gif' : 'images/jc_lose.gif'}" alt="John Cena everyone!">
   </div>
-
   
   <div if.bind="!displayGif">
 
-    <table>
+    <table class="center">
 
       <tbody>
 
