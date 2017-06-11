@@ -1,15 +1,11 @@
 
 // Aurelia imports
-import { bindable, customElement } from 'aurelia-framework';
+import { customElement } from 'aurelia-framework';
 // Project imports
 import { rand } from 'resources/helpers';
 
 @customElement('board')
 export class Board {
-
-  @bindable x;
-  @bindable y;
-  @bindable difficulty;
 
   constructor() {
 
@@ -25,6 +21,10 @@ export class Board {
 
     this.board = new Map;
     this.mines = [];
+
+    this.audioPlaying = false;
+    this.displayGif = false;
+    this.winner = false;
 
     this.setBoard();
 
@@ -183,17 +183,29 @@ export class Board {
   }
 
   endGame() {
+
     for (var i = 0; i < this.mines.length; i++) {
       this.mines[i].visited = true;
     }
 
+    if(this.audioPlaying) return;
+
     if(this.winner) {
       alert('You win!');
     } else {
-      alert('You lost! Muhaha');
+
+      this.audioPlaying = true;
       var audio = new Audio('audio/john_cena.mp3');
       audio.play();
+
     }
+
+    var _this = this;
+
+    setTimeout(function(){
+      _this.displayGif = true;
+    }, 2500);
+
   }
 
 }
