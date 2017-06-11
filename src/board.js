@@ -191,6 +191,8 @@ export class Board {
       alert('You win!');
     } else {
       alert('You lost! Muhaha');
+      var audio = new Audio('audio/john_cena.mp3');
+      audio.play();
     }
   }
 
