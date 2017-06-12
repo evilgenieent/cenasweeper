@@ -2,8 +2,10 @@
  * @Author: hajnyon 
  * @Date: 2017-06-11 02:40:16 
  * @Last Modified by: hajnyon
- * @Last Modified time: 2017-06-12 22:56:04
+ * @Last Modified time: 2017-06-12 23:07:04
  */
+
+cs-blue = #0665dc
 
 body
   font-family: Verdana, Tahoma, sans-serif
@@ -11,7 +13,7 @@ body
 
 .jumbotron
   background: #4608a3
-  background-image: -webkit-linear-gradient(#4608a3, #0665dc)
+  background-image: -webkit-linear-gradient(#4608a3, cs-blue)
   height: auto
   width: 100%
   z-index: 100 !important
@@ -19,8 +21,8 @@ body
     color: white
   &.footer
     padding: 20px 0
-    background: #0665dc
-    background-image: -webkit-linear-gradient(#0665dc, #06badc)
+    background: cs-blue
+    background-image: -webkit-linear-gradient(cs-blue, #06badc)
 
 h6
   margin: 0 0 0 0
@@ -44,19 +46,26 @@ button
   outline: none
   &:hover
     background-color: white
-    color: #0665dc
+    color: cs-blue
     cursor: pointer
 
 .cs-field
   background-color: lightblue
+  border: 1px solid white
+  color: white
   width: 25px
   height: 25px
   text-align: center
   &:hover
-    background-color: yellow
+    border: 1px solid cs-blue
+    cursor: crosshair
   &.cs-visited
-    background-color: green
+    border: 1px solid cs-blue
+    background-color: cs-blue
+    &:hover
+      cursor: not-allowed
     &.cs-empty
+      border: 1px solid grey
       background-color: grey
     &.cs-cena
       background-color: red
