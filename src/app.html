@@ -3,8 +3,8 @@
   <require from="board"></require>
   <require from="controls"></require>
 
-  <require from="resources/css/main.css"></require>
   <require from="resources/css/simple-grid.css"></require>
+  <require from="resources/css/main.css"></require>
 
   <div class="jumbotron">
 
@@ -14,11 +14,11 @@
 
         <div class="col-12">
           
-          <h1>Cena sweeper</h1>
-
-          <controls view-model="controls" x.two-way="x" y.two-way="y" mines-count.two-way="minesCount"></controls>
+          <h3>Cena sweeper</h3>
 
         </div>
+
+          <controls view-model="controls" x.two-way="x" y.two-way="y" mines-count.two-way="minesCount" reset.two-way="reset"></controls>
 
       </div>
 
@@ -31,9 +31,24 @@
     <div class="row">
 
       <div class="col-12">
-        <board view-model="board" x.two-way="x" y.two-way="y" mines-count.two-way="minesCount"></board>
+        <board view-model="board" x.two-way="x" y.two-way="y" mines-count.two-way="minesCount" reset.two-way="reset"></board>
       </div>
 
+    </div>
+
+  </div>
+
+  <div class="jumbotron footer">
+
+    <div class="container">
+
+      <div class="col-12">
+        
+        <a href="http://hajnyon.github.io" target="_blank">hajnyon</a>
+        <span class="right"></span>
+        
+      </div>
+    
     </div>
 
   </div>

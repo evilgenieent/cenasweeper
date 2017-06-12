@@ -2,7 +2,7 @@
  * @Author: hajnyon 
  * @Date: 2017-06-11 02:39:57 
  * @Last Modified by: hajnyon
- * @Last Modified time: 2017-06-11 13:11:47
+ * @Last Modified time: 2017-06-12 22:54:24
  */
 
 // Aurelia imports
@@ -16,6 +16,7 @@ export class Board {
   @bindable x;
   @bindable y;
   @bindable minesCount;
+  @bindable reset;
 
   constructor() {
 
@@ -26,12 +27,13 @@ export class Board {
 
   bind() {
 
-    console.log(this);
-
     this.init();
 
   }
 
+  /**
+   * Watches bindable changing and delegates init method.
+   */
   xChanged() {
     this.init();
   }
@@ -39,6 +41,9 @@ export class Board {
     this.init();
   }
   minesCountChanged() {
+    this.init();
+  }
+  resetChanged() {
     this.init();
   }
 

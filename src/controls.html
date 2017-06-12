@@ -1,9 +1,22 @@
 <template>
 
-  <div>
-    X: <input type="text" value.bind="x & debounce:800"><br>
-    Y: <input type="text" value.bind="y & debounce:800"><br>
-    Mines: <input type="text" value.bind="minesCount & debounce:800"><br>
+  <div class="col-3">
+    <h6>X</h6>
+    <input type="number" value.bind="x & debounce:800">
+  </div>
+
+  <div class="col-3">
+    <h6>Y</h6>
+    <input type="text" value.bind="y & debounce:800">
+  </div>
+
+  <div class="col-3">
+    <h6>Mines</h6>
+    <input type="text" value.bind="minesCount & debounce:800">
+  </div>
+
+  <div class="col-3">
+    <button click.delegate="init()">Refresh</button>
   </div>
 
 </template>
