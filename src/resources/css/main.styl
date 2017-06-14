@@ -2,18 +2,19 @@
  * @Author: hajnyon 
  * @Date: 2017-06-11 02:40:16 
  * @Last Modified by: hajnyon
- * @Last Modified time: 2017-06-12 23:07:04
+ * @Last Modified time: 2017-06-12 23:09:22
  */
 
 cs-blue = #0665dc
+cs-purple = #4608a3
 
 body
   font-family: Verdana, Tahoma, sans-serif
   color: white
 
 .jumbotron
-  background: #4608a3
-  background-image: -webkit-linear-gradient(#4608a3, cs-blue)
+  background: cs-purple
+  background-image: -webkit-linear-gradient(cs-purple, cs-blue)
   height: auto
   width: 100%
   z-index: 100 !important
@@ -70,7 +71,8 @@ button
     &.cs-cena
       background-color: red
   &.cs-flagged
-    background-color: purple
+    background-color: cs-purple
+    border: 1px solid cs-purple
   > img
     width: 25px
     height: 25px
